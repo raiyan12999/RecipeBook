@@ -1,0 +1,53 @@
+{% extends "recipes/base.html" %} {% block content %}
+
+<div class="container mt-5">
+  <form
+    class="col-6 mx-auto card p-3 shadow-lg"
+    method="POST"
+    enctype="multipart/form-data"
+  >
+    {% csrf_token %}
+    <h2>Add Recipe</h2>
+    <div class="mb-3">
+      <label for="exampleInputRecipe" class="form-label">Recipe name</label>
+      <input type="text" name="recipe_name" class="form-control" />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputDescription" class="form-label"
+        >Recipe description</label
+      >
+      <textarea class="form-control" name="recipe_description"></textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Add Recipe</button>
+  </form>
+</div>
+
+<div class="container mt-5">
+  <table class="col-10 mx-auto card p-3 shadow-lg">
+    <thead>
+      <tr>
+        <th scope="col" style="width: 1000px">Id</th>
+        <th scope="col" style="width: 1000px">Recipe Name</th>
+        <th scope="col" style="width: 1000px">Recipe Description</th>
+        <th scope="col" style="width: 1000px">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for recipe in Recipes%}
+      <tr>
+        <th scope="row" style="width: 1000px">{{forloop.counter}}</th>
+        <td style="width: 1000px">{{recipe.recipe_name}}</td>
+        <td style="width: 1000px">{{recipe.recipe_description}}</td>
+        <td style="width: 1000px">
+          <a href="/delete_recipe/{{recipe.id}}/" class="btn btn-danger"
+            >Delete</a
+          >
+          <a href="/update/{{recipe.id}}/" class="btn btn-success">Update</a>
+        </td>
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}
