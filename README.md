@@ -56,4 +56,4 @@ The Virtual Recipe Book is a web application built with Django that allows users
 ## Author
 
 - **Raiyan Bin Atik**  
-  ([GitHub Profile](https://github.com/raiyan12999))
+  [GitHub Profile](https://github.com/raiyan12999)
